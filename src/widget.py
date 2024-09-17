@@ -32,7 +32,7 @@ print(formatted_date)
 
 you_text = input()
 print(mask_account_card(you_text))
-
+#проверка коммита
 
 
 
