@@ -22,5 +22,5 @@ def get_mask_account(check: Union[str]) -> str:
         check_number = "**" + check[-4:]
         return check_number
     return "Ошибка: введен некорректный номер счета"
-print("dddddddfffffdddd")
+print("dddddddfffffxxxxxxdddd")
 #jfrjfjrjf
