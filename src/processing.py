@@ -14,4 +14,4 @@ dictionary = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29
 executed, canceled = filter_by_state(dictionary)
 print(executed)
 print(canceled)
-
+#реализация функции сортировки
