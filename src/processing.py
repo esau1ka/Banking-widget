@@ -19,3 +19,4 @@ def sort_by_date(dictionary_two):
     sorted_dictionary = sorted(dictionary_two, key=lambda k: k['date'], reverse=False)
     return sorted_dictionary
 print(sort_by_date(dictionary))
+# Функция сортировки по двум критериям
