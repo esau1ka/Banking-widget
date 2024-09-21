@@ -14,4 +14,8 @@ dictionary = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29
 executed, canceled = filter_by_state(dictionary)
 print(executed)
 print(canceled)
-#реализация функции сортировки
+
+def sort_by_date(dictionary_two):
+    sorted_dictionary = sorted(dictionary_two, key=lambda k: k['date'], reverse=False)
+    return sorted_dictionary
+print(sort_by_date(dictionary))
