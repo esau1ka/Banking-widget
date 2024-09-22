@@ -1,5 +1,7 @@
 
-def filter_by_state(dictionary_one, state='EXECUTED'):
+from typing import Union, Dict, List, Tuple
+def filter_by_state(dictionary_one: List[Dict[str,Union[str, int]]], state='EXECUTED') -> Tuple[List[Dict[str,Union[str, int]]], List[Dict[str,Union[str, int]]]]:
+    """Функция сортирует словарь по значению 'EXECUTED' и создает два новых словаря"""
     dictionary_executed = []
     dictionary_canceled = []
     for i in dictionary_one:
@@ -15,8 +17,9 @@ executed, canceled = filter_by_state(dictionary)
 print(executed)
 print(canceled)
 
-def sort_by_date(dictionary_two):
-    sorted_dictionary = sorted(dictionary_two, key=lambda k: k['date'], reverse=False)
+def sort_by_date(dictionary_two: List[Dict[str, Union[str, int]]], descending: bool=True) -> List[Dict[str,Union[str, int]]]:
+    """Сортировка словаря по дате, со значением по умолчанию"""
+    sorted_dictionary = sorted(dictionary_two, key=lambda k: k['date'], reverse=descending)
     return sorted_dictionary
 print(sort_by_date(dictionary))
 # Функция сортировки по двум критериям
