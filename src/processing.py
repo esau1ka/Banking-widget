@@ -30,7 +30,7 @@ print(canceled)
 def sort_by_date(
     dictionary_two: List[Dict[str, Union[str, int]]], descending: bool = True
 ) -> List[Dict[str, Union[str, int]]]:
-    """Сортировка словаря по дате, со значением по умолчанию"""
+    """Сортировка словаря по дате, со значением по умолчанию """
     sorted_dictionary = sorted(dictionary_two, key=lambda k: k["date"], reverse=descending)
     return sorted_dictionary
 
