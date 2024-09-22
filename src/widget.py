@@ -1,6 +1,7 @@
 from src.masks import get_mask_card_number, get_mask_account
 from datetime import datetime
 
+
 def mask_account_card(info):
     slovo = ["Maestro", "MasterCard", "Visa Classic", "Visa Platinum", "Visa Gold"]
     account = "Счет"
@@ -8,12 +9,12 @@ def mask_account_card(info):
         if i.lower() in info.lower():
             no_word = info.replace(i, "")
             no_space = no_word.strip()
-            return (f"{i} {get_mask_card_number(no_space)}")
+            return f"{i} {get_mask_card_number(no_space)}"
 
         elif account.lower() in info.lower():
             no_word = info.replace(i, "")
             no_space = no_word.strip()
-            return (f"{account} {get_mask_account(no_space)}")
+            return f"{account} {get_mask_account(no_space)}"
 
 
 def get_date(raw_date: str) -> str:
@@ -32,12 +33,5 @@ print(formatted_date)
 
 you_text = input()
 print(mask_account_card(you_text))
-#проверка коммитаssssgidddffdfпшеdfdffdfdfdffgvvvvgit statusfgfggfgvbvbvb
+# проверка коммитаssssgidddffdfпшеdfdffdfdfdffgvvvvgit statusfgfggfgvbvbvb
 print("aasssccccsa")
-
-
-
-
-
-
-
