@@ -1,4 +1,4 @@
-from typing import Union, Dict, List, Tuple
+from typing import Dict, List, Tuple, Union
 
 
 def filter_by_state(
@@ -33,7 +33,6 @@ def sort_by_date(
     """Сортировка словаря по дате, со значением по умолчанию """
     sorted_dictionary = sorted(dictionary_two, key=lambda k: k["date"], reverse=descending)
     return sorted_dictionary
-
 
 print(sort_by_date(dictionary))
 # Функция сортировки по двум критериям
