@@ -11,7 +11,7 @@ def get_mask_card_number(cards: Union[str]) -> str:
 
 
 def get_mask_account(check: Union[str]) -> str:
-    """Функция добавляет две ** и отображает последние 4 числа"""
+    """Функция добавляет две ** и  отображает последние 4 числа"""
     if len(check) > 5:
         if check.isdigit():
             check_number = "**" + check[-4:]
