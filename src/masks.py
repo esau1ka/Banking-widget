@@ -2,7 +2,7 @@ from typing import Union
 
 
 def get_mask_card_number(cards: Union[str]) -> str:
-    """Функция шифрует 6 цифр карты, начиная с 6 по 12 """
+    """Функция шифрует 6 цифр карты, начиная с 6 по 12"""
     if len(cards) == 16:
         cods_number = cards[:6] + "******" + cards[12:]
         hidden_number = cods_number[:4] + " " + cods_number[4:8] + " " + cods_number[8:12] + " " + cods_number[12:16]

@@ -20,7 +20,6 @@ def mask_account_card(info):
     return "Некорректный номер или счет"
 
 
-
 def get_date(raw_date: str) -> str:
 
     dt = datetime.strptime(raw_date, "%Y-%m-%dT%H:%M:%S.%f")
@@ -38,4 +37,3 @@ print(formatted_date)
 you_text = "Счет 73654108430135874305"
 print(mask_account_card(you_text))
 # проверка коммитаssssgidddffdfпшеdfdffdfdfdffgvvvvgit statusfgfggfgvbvbvb
-
