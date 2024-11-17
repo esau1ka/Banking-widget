@@ -1,7 +1,7 @@
 import json
 import os
 
-#from external_api import currency_conversion
+# from external_api import currency_conversion
 
 
 def to_get_json(local):
@@ -16,9 +16,7 @@ def to_get_json(local):
     except FileNotFoundError:
         return empty_list
     except json.JSONDecodeError as e:
-        return (f"Ошибка при обработке файла JSON:: {e}")
-
-
+        return f"Ошибка при обработке файла JSON:: {e}"
 
 
 file_json = os.path.join("/Users/a0000/MY_PROJEKT/bank_widget/", "data/operations.json")
@@ -27,6 +25,7 @@ result = to_get_json(file_json)
 
 def sum_transaction(money):
     from external_api import currency_conversion
+
     if money["operationAmount"]["currency"]["code"] == "RUB":
         result = money["operationAmount"]["amount"]
         return float(result)

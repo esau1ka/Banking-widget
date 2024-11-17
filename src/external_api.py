@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import requests
 from dotenv import load_dotenv
-from requests import patch
+
 
 load_dotenv()
 github_token = os.getenv("API_KEY")
