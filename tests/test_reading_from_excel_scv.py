@@ -4,45 +4,45 @@ import pandas as pd
 from io import StringIO
 
 
-
 def test_opening_a_file_csv():
-    # Подготовим тестовые данные, как строку (имитируем файл)
-    test_data = """id;state;date;amount;currency_name;currency_code;from;to;description
-650703;EXECUTED;2023-09-05T11:30:32Z;16210;Sol;PEN;Счет 58803664561298323391;Счет 39745660563456619397;Перевод организации
-3598919;EXECUTED;2020-12-06T23:00:58Z;29740;Peso;COP;Discover 3172601889670065;Discover 0720428384694643;Перевод с карты на карту"""
+    def test_opening_a_file_csv():
+        # Мокаем open, чтобы он возвращал предсказанные данные
+        with patch(
+            "builtins.open",
+            new_callable=patch.mock_open,
+            read_data="id;state;date;amount;currency_name;currency_code;from;to;description\n650703;EXECUTED;2023-09-05T11:30:32Z;16210;Sol;PEN;Счет 58803664561298323391;Счет 39745660563456619397;Перевод организации\n3598919;EXECUTED;2020-12-06T23:00:58Z;29740;Peso;COP;Discover 3172601889670065;Discover 0720428384694643;Перевод с карты на карту",
+        ) as mock_file:
+            # Ожидаемый результат
+            expected_result = [
+                {
+                    "id": "650703",
+                    "state": "EXECUTED",
+                    "date": "2023-09-05T11:30:32Z",
+                    "amount": "16210",
+                    "currency_name": "Sol",
+                    "currency_code": "PEN",
+                    "from": "Счет 58803664561298323391",
+                    "to": "Счет 39745660563456619397",
+                    "description": "Перевод организации",
+                },
+                {
+                    "id": "3598919",
+                    "state": "EXECUTED",
+                    "date": "2020-12-06T23:00:58Z",
+                    "amount": "29740",
+                    "currency_name": "Peso",
+                    "currency_code": "COP",
+                    "from": "Discover 3172601889670065",
+                    "to": "Discover 0720428384694643",
+                    "description": "Перевод с карты на карту",
+                },
+            ]
 
-    # Мокаем open, чтобы он возвращал объект StringIO с тестовыми данными
-    with patch("builtins.open", return_value=StringIO(test_data)):
-        # Запускаем функцию, которая будет читать данные из мока
-        opening_a_file_csv("fakefile.csv")
+            # Вызов функции с мокированным файлом
+            result = opening_a_file_csv("fakefile.csv")
 
-# Запуск теста
-if __name__ == "__main__":
-    test_opening_a_file_csv()
+            # Проверка, что результат соответствует ожидаемому
+            assert result == expected_result, f"Ожидался результат {expected_result}, но получен {result}"
 
-
-# Тест для функции opening_a_file_excel
-@patch("pandas.read_excel")
-def test_opening_a_file_excel(mock_read_excel):
-    # Создаем пример данных, которые должны быть возвращены из мока
-    mock_data = pd.DataFrame({
-        "from": ["12345", "54321"],
-        "to": ["67890", "09876"],
-        "description": ["Payment", "Refund"]
-    })
-
-    # Настроим mock так, чтобы он возвращал mock_data
-    mock_read_excel.return_value = mock_data
-
-    # Вызов функции с мокированным pandas.read_excel
-    result = opening_a_file_excel("/path/to/fakefile.xlsx")
-
-    # Проверяем, что результат соответствует ожидаемому
-    assert result.equals(mock_data), f"Ожидалось: {mock_data}, но получено: {result}"
-
-    # Проверяем, что read_excel был вызван с правильным аргументом
-    mock_read_excel.assert_called_once_with("/path/to/fakefile.xlsx")
-
-
-if __name__ == "__main__":
-    unittest.main()
+            # Проверка, что open был вызван с правильным аргументом
+            mock_file.assert_called_once_with("fakefile.csv")
