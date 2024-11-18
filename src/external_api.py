@@ -3,6 +3,7 @@ from unittest.mock import patch
 
 import requests
 from dotenv import load_dotenv
+from requests import patch
 
 
 load_dotenv()
