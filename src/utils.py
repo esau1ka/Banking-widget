@@ -1,5 +1,16 @@
 import json
 import os
+import logging
+
+log_folder = "logs_1"
+log_file = os.path.join(log_folder, "utils.log")
+logger = logging.getLogger("utils")
+logger.setLevel(logging.DEBUG)
+file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
+file_handler = logging.FileHandler(log_file)
+file_handler.setFormatter(file_formatter)
+file_handler.setLevel(logging.DEBUG)
+logger.addHandler(file_handler)
 
 # from external_api import currency_conversion
 
@@ -12,8 +23,10 @@ def to_get_json(local):
 
             if len(data) == 0 or data != list(data):
                 return empty_list
+            logger.info(f"Успешно загружены данные из {local}")
         return data
     except FileNotFoundError:
+        logger.error(f"не найден {local}")
         return empty_list
     except json.JSONDecodeError as e:
         return f"Ошибка при обработке файла JSON:: {e}"
@@ -28,8 +41,10 @@ def sum_transaction(money):
 
     if money["operationAmount"]["currency"]["code"] == "RUB":
         result = money["operationAmount"]["amount"]
+        logger.info(f"Транзакция в RUB: {result}")
         return float(result)
     else:
+        logger.info(f"Конвертируем валюту: {money}")
         return currency_conversion(money)
 
 

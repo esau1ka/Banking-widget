@@ -3,7 +3,6 @@ import csv
 import pandas as pd
 
 
-
 def opening_a_file_csv(csv_file):
     """создание списка транзакций из csv"""
     data = []
