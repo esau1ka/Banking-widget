@@ -1,4 +1,4 @@
-from src.external_api import currency_conversion
+
 from src.utils import to_get_json
 
 
