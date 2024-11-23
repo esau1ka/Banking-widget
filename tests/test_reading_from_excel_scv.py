@@ -1,7 +1,5 @@
 from unittest.mock import patch
 from src.reading_from_excel_scv import opening_a_file_excel, opening_a_file_csv
-import pandas as pd
-from io import StringIO
 
 
 def test_opening_a_file_csv():

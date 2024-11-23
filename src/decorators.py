@@ -14,7 +14,7 @@ def get_sq(width, height):
 
 w = 5
 h = 6
-print(f"Площадь прямоугольника {get_sq(w,h)}")
+print(f"Площадь прямоугольника {get_sq(w, h)}")
 
 t = {
     "ё": "yo",
@@ -82,7 +82,6 @@ s = input()
 itog = str_lower(s)
 print(itog)
 
-from functools import wraps
 
 str_1 = input()
 
